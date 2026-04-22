@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراجعة القرآن - نظام القرعة</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>📖 نظام مراجعة القرآن</h1>
+            <p>توزيع عادل لأرباع الحزب</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Section 1: Select Hizb -->
+            <section id="selectSection" class="section">
+                <h2>اختر الحزب</h2>
+                <div class="select-group">
+                    <div>
+                        <label for="hizb">الحزب:</label>
+                        <select id="hizb">
+                            <option value="">اختر الحزب</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Draw Button -->
+                <div class="draw-section">
+                    <button class="btn btn-success btn-large" onclick="performDraw()">🎲 إجراء القرعة</button>
+                </div>
+
+                <!-- History Section -->
+                <div id="historyContainer" style="display: none;">
+                    <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--dark-color);">السجل السابق</h3>
+                    <div id="drawHistory" class="draw-history"></div>
+                    <div id="paginationControls" class="pagination-controls"></div>
+                </div>
+            </section>
+
+            <!-- Section 3: Results -->
+            <section id="resultsSection" class="section" style="display: none;">
+                <h2>نتائج القرعة</h2>
+                <div class="info-box">
+                    <p><strong>الحزب:</strong> <span id="resultHizb"></span></p>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="quarter-number">الربع الأول</div>
+                        <div class="reader-name" id="result1"></div>
+                    </div>
+                    <div class="result-card">
+                        <div class="quarter-number">الربع الثاني</div>
+                        <div class="reader-name" id="result2"></div>
+                    </div>
+                    <div class="result-card">
+                        <div class="quarter-number">الربع الثالث</div>
+                        <div class="reader-name" id="result3"></div>
+                    </div>
+                    <div class="result-card">
+                        <div class="quarter-number">الربع الرابع</div>
+                        <div class="reader-name" id="result4"></div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="updateDraw()">إعادة القرعة</button>
+                    <button class="btn btn-secondary" onclick="newDraw()">قرعة جديدة</button>
+                    <button class="btn btn-danger" onclick="changeNames()">تغيير الأسماء</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Custom Confirmation Modal -->
+    <div id="confirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="confirmCancel">إلغاء</button>
+                <button class="btn btn-danger" id="confirmOk">تأكيد</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
